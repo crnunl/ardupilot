@@ -4168,15 +4168,9 @@ void QuadPlane::set_desired_spool_state(AP_Motors::DesiredSpoolState state)
     	void QuadPlane::give_min_pwm_to_servos(){
     
         SRV_Channel *c = SRV_Channels::srv_channel(2);
-       // SRV_Channel *c1 = SRV_Channels::srv_channel(2);
-        if (c == nullptr) {
-            continue;
-        }
-      
         const uint16_t min = c->get_output_min();
         const float a = min;   
-SRV_Channels::set_output_scaled(SRV_Channel::k_aileron,a);
-//SRV_Channels::set_output_scaled(SRV_Channel::k_elevator, );
+        SRV_Channels::set_output_scaled(SRV_Channel::k_aileron,a);
 }
 //1303
 

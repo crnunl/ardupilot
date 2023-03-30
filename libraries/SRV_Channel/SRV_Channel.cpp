@@ -158,7 +158,11 @@ void SRV_Channel::set_output_norm(float value)
         set_output_pwm(pwm_from_range(value * high_out));
     }
 }
-
+//
+  void set_output_min(uint16_t pwm) {
+        servo_min.set(pwm);
+  }
+//1303
 // set angular range of scaled output
 void SRV_Channel::set_angle(int16_t angle)
 {

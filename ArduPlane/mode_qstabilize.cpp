@@ -52,16 +52,13 @@ void ModeQStabilize::run()
     
         SRV_Channel *c = SRV_Channels::srv_channel(2);
         SRV_Channel *c1 = SRV_Channels::srv_channel(1);
-        SRV_Channel *c2 = SRV_Channels::srv_channel(4);
         const uint16_t min = c->get_output_min();
         const uint16_t min1 = c1->get_output_min();
-        const uint16_t min2 = c2->get_output_min();
-        const float a = min;   
-        const float c = min2;   
+        const float a = min;     
         const float b = min1;
         SRV_Channels::set_output_scaled(SRV_Channel::k_aileron,a);
         SRV_Channels::set_output_scaled(SRV_Channel::k_elevator,b);
-         SRV_Channels::set_output_scaled(SRV_Channel::k_rudder,c);
+        
 }
 
 // set the desired roll and pitch for a tailsitter

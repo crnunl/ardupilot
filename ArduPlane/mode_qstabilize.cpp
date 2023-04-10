@@ -49,6 +49,8 @@ void ModeQStabilize::run()
     // normal QSTABILIZE mode
     float pilot_throttle_scaled = quadplane.get_pilot_throttle();
     quadplane.hold_stabilize(pilot_throttle_scaled);
+    quadplane.give_min_pwm_to_servos();
+    //xxx  
 }
 
 // set the desired roll and pitch for a tailsitter

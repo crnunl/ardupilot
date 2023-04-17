@@ -56,8 +56,8 @@ void ModeQStabilize::run()
         const uint16_t min1 = c1->get_output_min();
         const float a = min;     
         const float b = min1;
-        SRV_Channels::set_output_scaled(SRV_Channel::k_aileron,a);
-        SRV_Channels::set_output_scaled(SRV_Channel::k_elevator,b);
+        SRV_Channels::set_output_pwm_chan(SRV_Channel::k_aileron,a);
+        SRV_Channels::set_output_pwm_chan(SRV_Channel::k_elevator,b);
         
 }
 

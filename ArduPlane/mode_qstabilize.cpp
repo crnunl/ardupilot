@@ -50,14 +50,18 @@ void ModeQStabilize::run()
     float pilot_throttle_scaled = quadplane.get_pilot_throttle();
     quadplane.hold_stabilize(pilot_throttle_scaled);
     
-        SRV_Channel *c = SRV_Channels::srv_channel(2);
-        SRV_Channel *c1 = SRV_Channels::srv_channel(1);
-        const uint16_t min = c->get_output_min();
-        const uint16_t min1 = c1->get_output_min();
-        const float a = min;     
-        const float b = min1;
-        SRV_Channels::set_output_pwm_chan(SRV_Channel::k_aileron,a);
-        SRV_Channels::set_output_pwm_chan(SRV_Channel::k_elevator,b);
+       // SRV_Channel *c = SRV_Channels::srv_channel(2);
+      //  SRV_Channel *c1 = SRV_Channels::srv_channel(1);
+       // const uint16_t min = c->get_output_min();
+       // const uint16_t min1 = c1->get_output_min();
+      //  const float a = min;     
+     //   const float b = min1;
+        SRV_Channels::set_output_scaled(SRV_Channel::k_aileron,0);
+        SRV_Channels::set_output_scaled(SRV_Channel::k_elevon_left,0);
+        SRV_Channels::set_output_scaled(SRV_Channel::k_elevon_right,0);
+        SRV_Channels::set_output_scaled(SRV_Channel::k_elevator,0);
+        SRV_Channels::set_output_scaled(SRV_Channel::k_flaperon_left,0);
+        SRV_Channels::set_output_scaled(SRV_Channel::k_flaperon_right,0);
         
 }
 

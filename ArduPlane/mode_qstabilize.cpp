@@ -17,6 +17,9 @@ void ModeQStabilize::update()
     // radio_in values. This means that the results for norm_input would not necessarily
     // be correct for tailsitters, so get_control_in() must be used instead.
     // normalize control_input to [-1,1]
+    
+     
+
     const float roll_input = (float)plane.channel_roll->get_control_in() / plane.channel_roll->get_range();
     const float pitch_input = (float)plane.channel_pitch->get_control_in() / plane.channel_pitch->get_range();
 
@@ -50,19 +53,40 @@ void ModeQStabilize::run()
     float pilot_throttle_scaled = quadplane.get_pilot_throttle();
     quadplane.hold_stabilize(pilot_throttle_scaled);
     
-       // SRV_Channel *c = SRV_Channels::srv_channel(2);
-      //  SRV_Channel *c1 = SRV_Channels::srv_channel(1);
-       // const uint16_t min = c->get_output_min();
-       // const uint16_t min1 = c1->get_output_min();
-      //  const float a = min;     
-     //   const float b = min1;
-        SRV_Channels::set_output_scaled(SRV_Channel::k_aileron,0);
-        SRV_Channels::set_output_scaled(SRV_Channel::k_elevon_left,0);
-        SRV_Channels::set_output_scaled(SRV_Channel::k_elevon_right,0);
-        SRV_Channels::set_output_scaled(SRV_Channel::k_elevator,0);
-        SRV_Channels::set_output_scaled(SRV_Channel::k_flaperon_left,0);
-        SRV_Channels::set_output_scaled(SRV_Channel::k_flaperon_right,0);
+    
+        // SRV_Channel *c = SRV_Channels::srv_channel(2);
+        // SRV_Channel *c1 = SRV_Channels::srv_channel(1);
+        // const uint16_t min = c->get_output_min();
+        // const uint16_t min1 = c1->get_output_min();
+        // const float a = min;     
+        // const float b = min1;
+        // SRV_Channels::set_output_pwm_chan(SRV_Channel::k_aileron,a);
+        // SRV_Channels::set_output_pwm_chan(SRV_Channel::k_elevator,b);
         
+     //SRV_Channel *c = SRV_Channels::srv_channel(2);
+        // SRV_Channel *c4 = SRV_Channels::srv_channel(4);
+     // const uint16_t min = c->get_output_min();
+       // const uint16_t min1 = c1->get_output_min();
+        // const float a = min;     
+     //const float b = min1;
+         SRV_Channel *c1 = SRV_Channels::srv_channel(1);
+         SRV_Channel *c2 = SRV_Channels::srv_channel(2);
+      const uint16_t min1 = c1->get_output_min();
+      const uint16_t min2 = c2->get_output_min();
+     SRV_Channel::set_output_pwm(min1,true);
+       SRV_Channel::set_output_pwm(min2,true);
+    
+    // for(int i=1; i<3;i++)
+    // {
+    //      SRV_Channel *c[i] = SRV_Channels::srv_channel(i);
+    //  const uint16_t min[i] = c[i]->get_output_min();
+    //  SRV_Channels::set_output_pwm(SRV_Channel::k_aileron,min[1]);
+    // }
+        
+    //     SRV_Channels::set_output_pwm(SRV_Channel::k_elevator,min[2]);
+        
+        //SRV_Channels::set_output_scaled(SRV_Channel::k_rudder,b);
+      
 }
 
 // set the desired roll and pitch for a tailsitter
